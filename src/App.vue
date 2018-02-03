@@ -1,28 +1,44 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <input-box :addTodo="addTodo"></input-box>
+    <todo-list :modTodo="modTodo" :delTodo="delTodo" :todos="todos"></todo-list>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import InputBox from './components/InputBox.vue'
+import TodoList from './components/TodoList.vue'
+//import Todo from './components/Todo.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    inputBox: InputBox,
+    todoList: TodoList
+  },
+  data: function(){
+    return {
+      todos:[]
+    }
+  },
+  methods:{
+    addTodo(content){
+      this.todos.push({
+        content,
+        isCompleted: false
+      });
+    },
+    modTodo(idx){
+      this.$set(this.todos, idx, {...this.todos[idx], isCompleted: !this.todos[idx].isCompleted});
+      //this.todos.splice(idx, 1, {...this.todos[idx], isCompleted: !this.todos[idx].isCompleted})
+    },
+    delTodo(idx){
+      this.todos = [...this.todos.slice(0, idx), ...this.todos.slice(idx+1)]
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
