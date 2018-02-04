@@ -8,6 +8,7 @@
       placeholder="Type To Add New Todo">
     </b-form-input>
     <b-button size="sm" variant="primary" @click="handleAddTodo">Add New Todo</b-button>
+
   </div>
 </template>
 
@@ -24,6 +25,7 @@ export default {
       if (this.newTodo.trim().length === 0) {
         return;
       }
+
       this.addTodo(this.newTodo);
       this.newTodo = "";
     }

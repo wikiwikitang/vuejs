@@ -1,7 +1,9 @@
 <template lang="html">
-  <div class="listMargin">
-    <span :class=classObj @dblclick="modTodo(idx)">{{todo.content}}</span>
-    <b-button size="sm" variant="danger" @click="delTodo(idx)">Del Todo</b-button>
+  <div class="listMargin" >
+    <b-alert show class="bAlert">
+      <span :class=classObj @dblclick="modTodo(idx)">{{todo.content}}</span>
+      <b-button size="sm" variant="danger" @click="delTodo(idx)">Del Todo</b-button>
+    </b-alert>
   </div>
 </template>
 
@@ -32,7 +34,7 @@ export default {
   }
 
   .todoMargin {
-    margin-left: 20px;
+    /* //margin-left: 10px; */
     margin-right:10px;
     margin-bottom: 10px;
   }
@@ -40,4 +42,14 @@ export default {
   .listMargin {
     margin-bottom: 10px;
   }
+
+  .bAlert {
+    margin-left: 20px;
+    width: fit-content;
+  }
+
+  .testMargin {
+    margin-left: 100px;
+  }
+
 </style>

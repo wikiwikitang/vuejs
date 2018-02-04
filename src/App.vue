@@ -6,37 +6,41 @@
 </template>
 
 <script>
-import InputBox from './components/InputBox.vue'
-import TodoList from './components/TodoList.vue'
-//import Todo from './components/Todo.vue'
+import InputBox from "./components/InputBox.vue";
+import TodoList from "./components/TodoList.vue";
+import { v4 } from "node-uuid";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
     inputBox: InputBox,
     todoList: TodoList
   },
-  data: function(){
+  data: function() {
     return {
-      todos:[]
-    }
+      todos: []
+    };
   },
-  methods:{
-    addTodo(content){
+  methods: {
+    addTodo(content) {
       this.todos.push({
         content,
-        isCompleted: false
+        isCompleted: false,
+        id: v4()
       });
     },
-    modTodo(idx){
-      this.$set(this.todos, idx, {...this.todos[idx], isCompleted: !this.todos[idx].isCompleted});
+    modTodo(idx) {
+      this.$set(this.todos, idx, {
+        ...this.todos[idx],
+        isCompleted: !this.todos[idx].isCompleted
+      });
       //this.todos.splice(idx, 1, {...this.todos[idx], isCompleted: !this.todos[idx].isCompleted})
     },
-    delTodo(idx){
-      this.todos = [...this.todos.slice(0, idx), ...this.todos.slice(idx+1)]
+    delTodo(idx) {
+      this.todos = [...this.todos.slice(0, idx), ...this.todos.slice(idx + 1)];
     }
   }
-}
+};
 </script>
 
 <style>
