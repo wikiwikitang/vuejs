@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="">
-    <transition-group name="list">
+    <transition-group name="fade">
       <todo v-for="(todo, idx) in todos" :key="todo.id" :modTodo='modTodo' :delTodo='delTodo' :idx="idx" :todo="todo"></todo>
     </transition-group>
   </div>
@@ -19,11 +19,16 @@ export default {
 
 <style lang="css" scoped>
 
-  .list-enter-active, .list-leave-active {
-    transition: all .5s
+  .fade-enter-active, .fade-leave-active {
+    transition: all .5s;
+    position: absolute;
   }
 
-  .list-enter, .list-leave-to {
+  .fade-enter, .fade-leave-to {
     opacity: 0;
+  }
+
+  .fade-move {
+    transition: transform 0.5s;
   }
 </style>

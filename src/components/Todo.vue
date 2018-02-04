@@ -10,18 +10,17 @@
 <script>
 // if class is a array and the element is a computed object, use name directly, otherwise use double quote + name => "name"
 export default {
-  props: ['modTodo', 'delTodo', 'todo', 'idx'],
+  props: ["modTodo", "delTodo", "todo", "idx"],
   computed: {
-    classObj: function(){
+    classObj: function() {
       return {
         noUserSelect: true,
-        completed: this.todo.isCompleted ? true: false,
+        completed: this.todo.isCompleted ? true : false,
         todoMargin: true
-      }
+      };
     }
   }
-
-}
+};
 </script>
 
 <style lang="css" scoped>
@@ -46,10 +45,6 @@ export default {
   .bAlert {
     margin-left: 20px;
     width: fit-content;
-  }
-
-  .testMargin {
-    margin-left: 100px;
   }
 
 </style>

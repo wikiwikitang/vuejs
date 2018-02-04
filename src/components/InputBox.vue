@@ -3,7 +3,7 @@
     <b-form-input
       type="text"
       v-model="newTodo"
-      @keydown.enter="handleAddTodo"
+      @keyup.enter.native="handleAddTodo"
       class="inputboxStyle"
       placeholder="Type To Add New Todo">
     </b-form-input>
@@ -11,7 +11,8 @@
 
   </div>
 </template>
-
+<!-- Since this is a custom vue component, it doesn't natively emit native browser events (like a native input would).
+To trap native evnets, you need to use the .native event modifier. -->
 <script>
 export default {
   props: ["addTodo"],
